@@ -8,13 +8,15 @@ RUN mkdir -p /src/app
 WORKDIR /src/app
 
 # What source code do you what to copy, and where to put it?
-COPY . /src/app
+COPY package*.json ./
 
 # Does your app have any dependencies that should be installed?
 RUN npm install
 
+COPY . .
+
 # What port will the container talk to the outside world with once created?
-EXPOSE 3000
+EXPOSE 8080
 
 # How do you start your app?
 CMD ["npm", "start"]
