@@ -11,7 +11,9 @@
     "start": "node server/index.js",
     "start:dev": "nodemon server/index.js",
     "test": "jest --coverage || true",
-    "test:dev": "jest --watch"
+    "test:dev": "jest --watch",
+    "test:tape": "node test/tests.js && zuul --ui tape --local 9966 -- test/tests.js",
+    "ci": "node test/tests.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,7 @@
     "eslint-plugin-react": "^7.5.1",
     "jest": "^21.2.1",
     "nodemon": "^1.12.5",
-    "tape": "^4.8.0"
+    "tape": "^4.8.0",
+    "zuul": "^3.11.1"
   }
 }
