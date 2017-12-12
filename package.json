@@ -10,10 +10,8 @@
   "scripts": {
     "start": "node server/index.js",
     "start:dev": "nodemon server/index.js",
-    "test": "jest --coverage || true",
-    "test:dev": "jest --watch",
-    "test:tape": "node test/tests.js && zuul --ui tape --local 9966 -- test/tests.js",
-    "ci": "node test/tests.js"
+    "test:tape": "node ./test && zuul --ui tape --local 9966 -- test/tests.js",
+    "ci": "node ./test"
   },
   "repository": {
     "type": "git",
