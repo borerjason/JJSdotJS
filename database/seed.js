@@ -1,3 +1,5 @@
+const client = require('./index');
+
 /* eslint-disable */
 // event table
 // const event = {
@@ -26,16 +28,17 @@ const makeUser = (userId, experimentGroup) => (
   }
 );
 
+
 const populateExperimentTable = () => {
-  console.log('function called');
+
+  const insertUser = 'INSERT INTO experiment (user_id, experimentgroup) VALUES (?, ?)'
   let experiment = false;
-  for (let i = 0; i < 10; i++) {
+
+  for (let i = 0; i < 10000; i++) {
     let experimentGroup = experiment ? experimentGroups.experiment : experimentGroups.control; 
-    let user = makeUser(i, experimentGroup)
     experiment = !experiment;
-    test.push(user);
+    client.client.execute(insertUser, [i, experimentGroup], {prepare: true}, (result) => {})
   }
 }
-
 
 module.exports.populateExperimentTable = populateExperimentTable;

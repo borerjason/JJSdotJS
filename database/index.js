@@ -1,10 +1,14 @@
 const cassandra = require('cassandra-driver');
+const { populateExperimentTable } = require('../database/seed');
 
-const client = new cassandra.Client({ contactPoints: ['127.0.0.1'], keyspace: 'mykeyspace' });
+const client = new cassandra.Client({ contactPoints: ['127.0.0.1'], keyspace: 'client' });
 
 client.connect((err, result) => {
   console.log('index : cassandra connected');
+  // populateExperimentTable();
 });
+
+module.exports.client = client;
 
 // create client keyspace
 // CREATE KEYSPACE client with REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 3};
