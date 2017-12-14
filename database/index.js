@@ -1,11 +1,11 @@
 const cassandra = require('cassandra-driver');
-const { populateExperimentTable } = require('../database/seed');
+const { populateExperimentTable, weekOne } = require('../database/seed');
 
 const client = new cassandra.Client({ contactPoints: ['127.0.0.1'], keyspace: 'client' });
 
 client.connect((err, result) => {
   console.log('index : cassandra connected');
-  // populateExperimentTable();
+  weekOne();
 });
 
 module.exports.client = client;
