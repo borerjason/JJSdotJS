@@ -5,7 +5,7 @@ const client = new cassandra.Client({ contactPoints: ['127.0.0.1'], keyspace: 'c
 
 client.connect((err, result) => {
   console.log('index : cassandra connected');
-  weekOne();
+  // weekOne();
 });
 
 module.exports.client = client;
