@@ -12,7 +12,7 @@
     "start:dev": "nodemon server/index.js",
     "test:tape": "node ./test && zuul --ui tape --local 9966 -- test/tests.js",
     "ci": "node ./test",
-    "db:seed": "node database/seed.js"
+    "db:seed": "node database/seed/seed.js"
   },
   "repository": {
     "type": "git",
