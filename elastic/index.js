@@ -30,15 +30,7 @@ const indexName = 'events';
 //   .catch((err) => {
 //     console.log(err);
 //   });
-const sample = {
-  id: "test",
-  user_id: 1,
-  experimentgroup: 3,
-  item_id: "testing",
-  itemtype: "page",
-  eventtype: "click",
-  timestamp: 1/1/2017,
-};
+const sample = ['asdfasdf', 1, 3, 'asdfffasdf', 'page', 'click', '01/01/2017']
 
 addDocument(sample).then((res) => {
     console.log(res);
@@ -87,7 +79,9 @@ function initMapping() {
         item_id: { type: "text" },
         itemtype: { type: "text" },
         eventtype: { type: "text" },
-        timestamp: { type: "date" }
+        timestamp: 
+        { type: "date",
+          format: "mm/dd/yyyy"}
       },
     },
   });

@@ -87,6 +87,7 @@ const seedEvents = (date, itemNum, startNum, maxNum, group) => {
 };
 
 // Uncomment and run file to seed database
-// seedEvents('1/1/2018', item, 0, max, experimentGroups.control);
+seedEvents('1/1/2018', item, 0, max, experimentGroups.control);
 // seedEvents('1/1/2018', item, 1, max, experimentGroups.experiment);
 
+//CREATE TABLE client.events(id text PRIMARY KEY, eventtype text, experimentgroup int, item_id text, itemtype text, timestamp timestamp, user_id int);
