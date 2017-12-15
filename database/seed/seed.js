@@ -2,6 +2,7 @@ const uniqid = require('uniqid');
 
 const client = require('../index');
 const { controlDate, experimentDate } = require('./helpers');
+const elastic = require('../../elastic');
 
 const experimentGroups = {
   control: 1,
@@ -30,9 +31,12 @@ const insertEvent = 'INSERT INTO events (id, user_id, experimentgroup, item_id, 
 
 const seedEvents = (date, itemNum, startNum, maxNum, group) => {
   const arr = [];
+  let doc = [];
   let i = startNum;
   for (; i < max; i += 2) {
-    arr.push({ query: insertEvent, params: [uniqid(), i, group, uniqid(), itemTypes[item], eventTypes[item], date] });
+    doc = [uniqid(), i, group, uniqid(), itemTypes[item], eventTypes[item], date];
+    arr.push({ query: insertEvent, params: doc });
+    elastic.addDocument(doc);
   }
 
   client.client.batch(arr, { prepare: true }).then(() => {

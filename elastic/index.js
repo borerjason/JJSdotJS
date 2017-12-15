@@ -99,13 +99,13 @@ function addDocument(document) {
     index: indexName,
     type: 'document',
     body: {
-      id: document.id,
-      user_id: document.user_id,
-      experimentgroup: document.experimentgroup,
-      item_id: document.item_id,
-      itemtype: document.itemtype,
-      eventtype: document.eventtype,
-      timestamp: document.timestamp,
+      id: document[0],
+      user_id: document[1],
+      experimentgroup: document[2],
+      item_id: document[3],
+      itemtype: document[4],
+      eventtype: document[5],
+      timestamp: document[6],
     },
   });
 }
