@@ -1,8 +1,12 @@
 const service = require('express')();
 const bodyParser = require('body-parser');
-// require('dotenv').config();
+require('dotenv').config();
 
-const controllers = require('./controllers');
+const controller = require('./controllers');
+
+/*
+  --- uncomment for load lesting during dev ---
+
 const apm = require('elastic-apm-node').start({
   appName: 'client',
   // Use if APM Server requires a token
@@ -11,16 +15,17 @@ const apm = require('elastic-apm-node').start({
   serverUrl: 'http://localhost:8200',
 });
 
+service.use(apm.middleware.express());
+
+*/
+
 service.use(bodyParser.json());
 
 service.route('/')
-  .get(controllers.getFeed);
+  .get(controller.getFeed.feed);
 
 service.route('/events')
-  .post(controllers.logEvent);
-
-service.use(apm.middleware.express());
-
+  .post(controller.logEvent.logEvent);
 
 const PORT = process.env.PORT || 8080;
 

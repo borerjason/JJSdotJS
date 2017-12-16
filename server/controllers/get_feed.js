@@ -37,7 +37,7 @@ const prepareFeed = (experimentalgroup) => {
   const adverts = getAdverts();
   // when feed and adverts arrive check which experiment group user is in and create new array with appropriate mix
   Promise.all([feed, adverts])
-    .then()
+    .then() 
 
 }
 */
