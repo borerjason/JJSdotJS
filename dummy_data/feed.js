@@ -7,7 +7,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
   {
     postId: faker.random.number(),
@@ -15,7 +15,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
   {
     postId: faker.random.number(),
@@ -23,7 +23,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
   {
     postId: faker.random.number(),
@@ -31,7 +31,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
   {
     postId: faker.random.number(),
@@ -39,7 +39,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
   {
     postId: faker.random.number(),
@@ -47,7 +47,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
   {
     postId: faker.random.number(),
@@ -55,7 +55,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
   {
     postId: faker.random.number(),
@@ -63,7 +63,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
   {
     postId: faker.random.number(),
@@ -71,7 +71,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
   {
     postId: faker.random.number(),
@@ -79,7 +79,7 @@ module.exports = [
     postOwnerId: faker.random.number(),
     postOwnerName: faker.name.findName(),
     postOwnerType: faker.random.word(),
-    postLikeCount: faker.randeom.number(),
+    postLikeCount: faker.random.number(),
   },
 ];
 

@@ -1,12 +1,17 @@
 const axios = require('axios');
 const MockAdapter = require('axios-mock-adapter');
 
-// ------ mock for service testing -------
-const mock = new MockAdapter(axios);
+const dummy = require('../../dummy_data');
 
-mock.onGet('/users/0/feed').reply(200, {
-  feed: 
-})
+// ------ mock for service testing -------
+console.log('DUMMY', dummy);
+const mock = new MockAdapter(axios, { delayResponse: 1000 });
+mock
+  .onGet('/users/0/feed').reply(200, { feed: dummy.feed })
+  .onGet('/adverts?userId=0').reply(200, { adverts: dummy.adverts });
+
+// ---------------------------------------
+
 const feed = ({ body }, res) => {
   // check if they are in experimental group
   // serve feed/home page to the user
