@@ -19,20 +19,20 @@ doc = [id, i, group, itemId, itemTypes[item], eventTypes[item], date];
 //   .catch((err) => {
 //     console.log(err);
 //   });
-initIndex()
-  .then((res) => {
-    console.log(res);
-    initMapping()
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// initIndex()
+//   .then((res) => {
+//     console.log(res);
+//     initMapping()
+//     .then((res) => {
+//       console.log(res);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 //  const sample = [ '333a7n2kqjb8cgj2b',
 // 8200,

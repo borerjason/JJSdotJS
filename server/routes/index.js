@@ -4,6 +4,7 @@ const contentPost = require('../post_helpers');
 routes.get('/', (req, res) => {
   // serve feed/home page to the user
   // fetch information from content service
+  // check if they are in experimental group
 
   res.send('Hello World!');
 });
