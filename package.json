@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/borerjason/JJSdotJS#readme",
   "dependencies": {
+    "axios": "^0.17.1",
     "cassandra-driver": "^3.3.0",
     "elasticsearch": "^14.0.0",
     "express": "^4.16.2",

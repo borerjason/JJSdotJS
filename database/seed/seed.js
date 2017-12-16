@@ -94,3 +94,4 @@ const seedEvents = (date, itemNum, startNum, maxNum, group) => {
 // seedEvents('01/01/2018', item, 0, max, experimentGroups.control);
 // seedEvents('01/01/2018', item, 1, max, experimentGroups.experiment);
 
+module.exports.insertEvent = insertEvent;

@@ -1,7 +1,10 @@
 const routes = require('express').Router();
+const contentPost = require('../post_helpers');
 
 routes.get('/', (req, res) => {
   // serve feed/home page to the user
+  // fetch information from content service
+
   res.send('Hello World!');
 });
 
