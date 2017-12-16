@@ -27,6 +27,7 @@ service.route('/')
 service.route('/events')
   .post(controller.logEvent.logEvent);
 
+
 const PORT = process.env.PORT || 8080;
 
 service.listen(PORT, () => {
