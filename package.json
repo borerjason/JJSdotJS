@@ -8,8 +8,8 @@
     "node": ">=6.4.0"
   },
   "scripts": {
-    "start": "node server/app.js",
-    "start:dev": "nodemon server/app.js",
+    "start": "node server",
+    "start:dev": "nodemon server",
     "test:tape": "node ./test && zuul --ui tape --local 9966 -- test/tests.js",
     "ci": "node ./test",
     "db:seed": "node database/seed/seed.js",
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/borerjason/JJSdotJS#readme",
   "dependencies": {
     "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
     "cassandra-driver": "^3.3.0",
     "elastic-apm-node": "^0.9.0",
     "elasticsearch": "^14.0.0",

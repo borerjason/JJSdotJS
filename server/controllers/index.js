@@ -1,22 +1,7 @@
-const routes = require('express').Router();
-const { sendLike } = require('../helpers/post');
-const { getFeed, getAdverts} = require('../helpers/get');
+module.exports.getFeed = require('./get_feed');
+module.exports.logEvent = require('./log_event');
 
-routes.get('/', (req, res) => {
-  // check if they are in experimental group
-  // serve feed/home page to the user
-
-  // fetch information from content service
-
-  res.send('Hello World!');
-});
-
-routes.post('/events', (req, res) => {
-  const eventInfo = req.body;
-  sendLike(eventInfo);
-  res.end();
-});
-
+/*
 routes.post('/events/pages/likes', (req, res) => {
   const id = req.body.pageId;
   // Add event information to DB
@@ -51,4 +36,4 @@ routes.post('/events/adverts/views', (req, res) => {
   res.send('Hello World!');
 });
 
-module.exports = routes;
+*/
