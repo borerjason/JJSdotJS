@@ -8,6 +8,10 @@ const elasticClient = new elasticsearch.Client({
 
 const indexName = 'events';
 
+/*
+doc = [id, i, group, itemId, itemTypes[item], eventTypes[item], date];
+*/
+
 // deleteIndex()
 //   .then((res) => {
 //     console.log('del worked');
@@ -15,29 +19,35 @@ const indexName = 'events';
 //   .catch((err) => {
 //     console.log(err);
 //   });
-// initIndex()
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-// initMapping()
-//   .then((res) => {
-//     console.log(res);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-const sample = ['asdfasdf', 1, 3, 'asdfffasdf', 'page', 'click', '01/01/2017']
-
-addDocument(sample).then((res) => {
+initIndex()
+  .then((res) => {
     console.log(res);
+    initMapping()
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   })
   .catch((err) => {
     console.log(err);
   });
+
+//  const sample = [ '333a7n2kqjb8cgj2b',
+// 8200,
+//   1,
+//   '333a7n2kqjb8cgj2c',
+//   'advert',
+//   'view',
+//   '01/01/2018' ]
+
+// addDocument(sample).then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 // delete an existing index
 function deleteIndex() {

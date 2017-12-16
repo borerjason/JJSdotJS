@@ -2,7 +2,7 @@ const uniqid = require('uniqid');
 
 const client = require('../index');
 const { controlDate, experimentDate } = require('./helpers');
-const elastic = require('../../elastic');
+const elastic = require('../../elastic/index');
 
 const experimentGroups = {
   control: 1,
@@ -31,15 +31,19 @@ const insertEvent = 'INSERT INTO events (id, user_id, experimentgroup, item_id, 
 
 const seedEvents = (date, itemNum, startNum, maxNum, group) => {
   const arr = [];
-  let doc = [];
+  const doc = [];
   let i = startNum;
   for (; i < max; i += 2) {
-    doc = [uniqid(), i, group, uniqid(), itemTypes[item], eventTypes[item], date];
-    arr.push({ query: insertEvent, params: doc });
-    elastic.addDocument(doc);
+    doc.push([uniqid(), i, group, uniqid(), itemTypes[item], eventTypes[item], date]);
+    arr.push({ query: insertEvent, params: [uniqid(), i, group, uniqid(), itemTypes[item], eventTypes[item], date] });
   }
-
+  
   client.client.batch(arr, { prepare: true }).then(() => {
+    
+    doc.forEach((document) => {
+      elastic.addDocument(document);
+    });
+
     count += arr.length;
     if (itemNum === 0) {
       item = 1;
@@ -87,7 +91,6 @@ const seedEvents = (date, itemNum, startNum, maxNum, group) => {
 };
 
 // Uncomment and run file to seed database
-seedEvents('1/1/2018', item, 0, max, experimentGroups.control);
-// seedEvents('1/1/2018', item, 1, max, experimentGroups.experiment);
+// seedEvents('01/01/2018', item, 0, max, experimentGroups.control);
+// seedEvents('01/01/2018', item, 1, max, experimentGroups.experiment);
 
-//CREATE TABLE client.events(id text PRIMARY KEY, eventtype text, experimentgroup int, item_id text, itemtype text, timestamp timestamp, user_id int);
