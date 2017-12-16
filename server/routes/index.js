@@ -1,12 +1,20 @@
 const routes = require('express').Router();
-const contentPost = require('../post_helpers');
+const { sendLike } = require('../helpers/post');
+const { getFeed, getAdverts} = require('../helpers/get');
 
 routes.get('/', (req, res) => {
-  // serve feed/home page to the user
-  // fetch information from content service
   // check if they are in experimental group
+  // serve feed/home page to the user
+
+  // fetch information from content service
 
   res.send('Hello World!');
+});
+
+routes.post('/events', (req, res) => {
+  const eventInfo = req.body;
+  sendLike(eventInfo);
+  res.end();
 });
 
 routes.post('/events/pages/likes', (req, res) => {

@@ -31,18 +31,11 @@ const insertEvent = 'INSERT INTO events (id, user_id, experimentgroup, item_id, 
 
 const seedEvents = (date, itemNum, startNum, maxNum, group) => {
   const arr = [];
-  const doc = [];
   let i = startNum;
   for (; i < max; i += 2) {
-    doc.push([uniqid(), i, group, uniqid(), itemTypes[item], eventTypes[item], date]);
     arr.push({ query: insertEvent, params: [uniqid(), i, group, uniqid(), itemTypes[item], eventTypes[item], date] });
   }
-  
   client.client.batch(arr, { prepare: true }).then(() => {
-    
-    doc.forEach((document) => {
-      elastic.addDocument(document);
-    });
 
     count += arr.length;
     if (itemNum === 0) {
