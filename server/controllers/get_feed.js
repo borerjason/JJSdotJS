@@ -2,6 +2,7 @@ const axios = require('axios');
 const MockAdapter = require('axios-mock-adapter');
 
 const dummy = require('../../dummy_data');
+const prepareFeed = require('../helpers/prepare_feed');
 
 // ------ mock for service testing -------
 
@@ -24,7 +25,8 @@ const feed = (req, res) => {
   Promise.all([contentFeed, adverts])
     .then((response) => {
       console.log('promises resolved');
-      res.send(response[0].data.feed.concat(response[1].data.adverts));
+      const feedFinal = prepareFeed(3, response[0].data.feed, response[1].data.adverts);
+      res.send(feedFinal);
     })
     .catch((err) => {
       console.log(err);
