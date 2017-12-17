@@ -35,13 +35,6 @@ module.exports.feed = feed;
 
 // helper functions if want to modularize later
 /*
-const getFeed = (userId) => {
-  return axios.get(`/users/${userId}/feed`);
-};
-
-const getAdverts = (userId) => {
-  return axios.get(`/adverts?userId=${userId}`);
-};
 
 const prepareFeed = (experimentalgroup) => {
   // get feed
