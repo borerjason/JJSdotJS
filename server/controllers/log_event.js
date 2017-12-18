@@ -1,28 +1,14 @@
-const { postEvent } = require('../../database/models/log_event');
-const { likePost, likePage} = require('../helpers/post_content');
+// const { postEvent } = require('../../database/models/log_event');
 
-const logEvent = (req, res) => {
-  const eventInfo = req.body;
-  postEvent(eventInfo)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  postContentService(eventInfo)
-    .then(() => {
-      res.send();
-    })
-    .catch(() => {
-      res.send();
+// const logEvent = (req, res) => {
+//   const eventInfo = req.body;
+//   postEvent(eventInfo)
+//     .then((response) => {
+//       console.log('Result from log event to DB: ', response);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
-    });
-  postAdvertService(eventInfo)
-    .then(() => {
-    })
-    .catch(() => {
-    });
-};
-
-module.exports.logEvent = logEvent;
+// module.exports.logEvent = logEvent;
