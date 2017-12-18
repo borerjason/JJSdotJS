@@ -35,8 +35,8 @@ const seedEvents = (date, itemNum, startNum, maxNum, group) => {
   for (; i < max; i += 2) {
     arr.push({ query: insertEvent, params: [uniqid(), i, group, uniqid(), itemTypes[item], eventTypes[item], date] });
   }
-  client.client.batch(arr, { prepare: true }).then(() => {
-
+  client.client.batch(arr, { prepare: true }).then((response) => {
+    console.log(response);
     count += arr.length;
     if (itemNum === 0) {
       item = 1;
@@ -84,7 +84,7 @@ const seedEvents = (date, itemNum, startNum, maxNum, group) => {
 };
 
 // Uncomment and run file to seed database
-// seedEvents('01/01/2018', item, 0, max, experimentGroups.control);
-// seedEvents('01/01/2018', item, 1, max, experimentGroups.experiment);
+seedEvents('01/01/2017', item, 0, max, experimentGroups.control);
+// seedEvents('01/01/2017', item, 1, max, experimentGroups.experiment);
 
 module.exports.insertEvent = insertEvent;
