@@ -1,7 +1,7 @@
 const { postEvent } = require('../../database/models/log_event');
-const { likePost, likePage} = require('../helpers/post_content');
+const { likePostContent } = require('../helpers/post_content');
 
-const logEvent = (req, res) => {
+module.exports = (req, res) => {
   const eventInfo = req.body;
   postEvent(eventInfo)
     .then((response) => {
@@ -10,19 +10,11 @@ const logEvent = (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-  postContentService(eventInfo)
+  likePostContent(eventInfo)
     .then(() => {
-      res.send();
+      res.send('post recorded');
     })
     .catch(() => {
-      res.send();
-
-    });
-  postAdvertService(eventInfo)
-    .then(() => {
-    })
-    .catch(() => {
+      res.send('like could not be recorded');
     });
 };
-
-module.exports.logEvent = logEvent;

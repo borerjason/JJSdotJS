@@ -34,18 +34,3 @@ const feed = (req, res) => {
 };
 
 module.exports.feed = feed;
-
-// helper functions if want to modularize later
-/*
-
-const prepareFeed = (experimentalgroup) => {
-  // get feed
-  const feed = getFeed();
-  // get adverts
-  const adverts = getAdverts();
-  // when feed and adverts arrive check which experiment group user is in and create new array with appropriate mix
-  Promise.all([feed, adverts])
-    .then() 
-
-}
-*/

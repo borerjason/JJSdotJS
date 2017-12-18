@@ -1,5 +1,8 @@
 module.exports.getFeed = require('./get_feed');
 module.exports.logEvent = require('./log_event');
+module.exports.likePost = require('./like_post');
+module.exports.likePage
+module.exports.likeAdvert
 
 /*
 routes.post('/events/pages/likes', (req, res) => {
