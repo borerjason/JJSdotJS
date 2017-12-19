@@ -1,4 +1,9 @@
-const uniqid = require('uniqid');
+// const uniqid = require('uniqid');
+const rn = require('random-number');
+
+const gen = rn.generator({
+  integer: true,
+});
 
 const client = require('../index');
 const { controlDate, experimentDate } = require('./helpers');
@@ -33,7 +38,7 @@ const seedEvents = (date, itemNum, startNum, maxNum, group) => {
   const arr = [];
   let i = startNum;
   for (; i < max; i += 2) {
-    arr.push({ query: insertEvent, params: [uniqid(), i, group, uniqid(), itemTypes[item], eventTypes[item], date] });
+    arr.push({ query: insertEvent, params: [gen(), i, group, gen(), itemTypes[item], eventTypes[item], date] });
   }
   client.client.batch(arr, { prepare: true }).then((response) => {
     count += arr.length;
@@ -85,5 +90,9 @@ const seedEvents = (date, itemNum, startNum, maxNum, group) => {
 // Uncomment and run file to seed database
 // seedEvents('01/01/2017', item, 0, max, experimentGroups.control);
 // seedEvents('01/01/2017', item, 1, max, experimentGroups.experiment);
+
+/*
+create table events (id int primary key, user_id int, experimentgroup int, item_id int, itemtype text, eventtype text, timestamp timestamp) ;
+*/
 
 module.exports.insertEvent = insertEvent;

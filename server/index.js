@@ -7,6 +7,7 @@
 // });
 
 // ---------------------------------------------------------
+require('newrelic');
 
 const service = require('express')();
 const bodyParser = require('body-parser');
