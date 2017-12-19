@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server",
     "start:dev": "nodemon server",
-    "test:tape": "node ./test && zuul --ui tape --local 9966 -- test/tests.js",
+    "test:tape": "node ./test",
     "ci": "node ./test",
     "db:seed": "node database/seed/seed.js",
     "elastic": "node elastic/index.js"
