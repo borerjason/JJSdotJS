@@ -19,7 +19,7 @@ const pageLike = {
 const advertLike = {
   user_id: 0,
   experimentgroup: 3,
-  item_id: faker.random.number(),
+  item_id: '0',
   itemtype: 'Advert',
   eventtype: 'Like',
 };
@@ -27,7 +27,7 @@ const advertLike = {
 const advertClick = {
   user_id: 0,
   experimentgroup: 3,
-  item_id: faker.random.number(),
+  item_id: '0',
   itemtype: 'Advert',
   eventtype: 'Click',
 };
@@ -35,7 +35,7 @@ const advertClick = {
 const advertView = {
   user_id: 0,
   experimentgroup: 3,
-  item_id: faker.random.number(),
+  item_id: '0',
   itemtype: 'Advert',
   eventtype: 'View',
 };

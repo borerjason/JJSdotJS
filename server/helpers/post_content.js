@@ -1,7 +1,8 @@
 const axios = require('axios');
-const MockAdapter = require('axios-mock-adapter');
 
 // ------ mock for service testing -------
+
+const MockAdapter = require('axios-mock-adapter');
 const faker = require('faker');
 
 const mock = new MockAdapter(axios, { delayResponse: 25 });
