@@ -11,7 +11,7 @@ const postLike = {
 const pageLike = {
   user_id: 0,
   experimentgroup: 3,
-  item_id: faker.random.number(),
+  item_id: '0',
   itemtype: 'Page',
   eventtype: 'Like',
 };

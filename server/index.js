@@ -19,8 +19,8 @@ service.use(bodyParser.json());
 service.route('/feed')
   .get(controller.getFeed.feed);
 
-// service.route('/events/pages/likes')
-//   .post(controller.logEvent.logEvent);
+service.route('/events/pages/likes')
+  .post(controller.likePage);
 
 service.route('/events/posts/likes')
   .put(controller.likePost);
