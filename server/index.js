@@ -28,6 +28,9 @@ service.route('/events/posts/likes')
 service.route('/events/adverts/likes')
   .post(controller.likeAdvert);
 
+service.route('/events/adverts/clicks')
+  .post(controller.clickAdvert);
+
 // service.route('/events/adverts/views')
 //   .post(controller.logEvent.logEvent);
 

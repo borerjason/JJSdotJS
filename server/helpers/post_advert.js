@@ -1,15 +1,7 @@
 const axios = require('axios');
-const MockAdapter = require('axios-mock-adapter');
-
-// ------ mock for service testing -------
-
-
-// const mock = new MockAdapter(axios, { delayResponse: 25 });
-// mock
-//   .onPost('/adverts/0/likes').reply(200)
-//   .onPost('/adverts/0/click').reply(200);
-
-// ---------------------------------------
+// ---------- require mocks for local testing -----------
+require('../../dummy_data/mocks');
+// ------------------------------------------------------
 
 const likeAdvert = (userId, advertId) => (
   axios.post(`/adverts/${advertId}/likes`, { userId }));

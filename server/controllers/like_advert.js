@@ -10,13 +10,12 @@ module.exports = (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-  console.log('Event Info', eventInfo);
   likeAdvert(eventInfo.user_id, eventInfo.item_id)
     .then(() => {
       res.send('post recorded');
     })
     .catch((catchRes) => {
-      console.log('catchRes', catchRes);
+      console.log('catchRes like Advert', catchRes);
       res.send('like could not be recorded');
     });
 };
