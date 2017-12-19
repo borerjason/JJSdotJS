@@ -1,8 +1,7 @@
 const axios = require('axios');
+const MockAdapter = require('axios-mock-adapter');
 
 // ------ mock for service testing -------
-
-const MockAdapter = require('axios-mock-adapter');
 const faker = require('faker');
 
 const mock = new MockAdapter(axios, { delayResponse: 25 });
@@ -22,8 +21,7 @@ mock
 const likePostContent = (userId, postId) => (
   axios.put(`/posts/${postId}/likes`, { userId }));
 
-const likePageContent = (userId, postId) => {
-  axios.post(`/pages/${postId}/likes`, { userId }) 
-};
+const likePageContent = (userId, postId) => (
+  axios.post(`/pages/${postId}/likes`, { userId }));
 
 module.exports = { likePostContent, likePageContent };

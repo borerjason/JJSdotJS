@@ -33,10 +33,10 @@
     "express": "^4.16.2",
     "generate-random-data": "0.0.3",
     "moment": "^2.19.4",
+    "axios-mock-adapter": "^1.10.0",
     "uniqid": "^4.1.1"
   },
   "devDependencies": {
-    "axios-mock-adapter": "^1.10.0",
     "babel-tape-runner": "^2.0.1",
     "eslint": "^4.13.0",
     "eslint-config-airbnb": "^16.1.0",

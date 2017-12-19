@@ -26,7 +26,7 @@ service.route('/events/posts/likes')
   .put(controller.likePost);
 
 // service.route('/events/adverts/likes')
-//   .post(controller.logEvent.logEvent);
+//   .post(controller.likeAdvert);
 
 // service.route('/events/adverts/views')
 //   .post(controller.logEvent.logEvent);
