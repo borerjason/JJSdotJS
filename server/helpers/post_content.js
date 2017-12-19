@@ -21,7 +21,6 @@ mock
 // ---------------------------------------
 
 const likePostContent = (userId, postId) => {
-  console.log('POST ID: ', postId);
   return axios.put(`/posts/${postId}/likes`, { userId });
 };
 const likePageContent = (eventInfo) => {
