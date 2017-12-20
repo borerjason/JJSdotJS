@@ -27,7 +27,7 @@ test('axios post request to page content test service return "post recorded" ', 
   t.end();
 })
 
-test('axios post request to advert like test service return "status 200" ', function (t) {
+test('axios post request to advert like test service return "post recorded"', function (t) {
   axios.post(`http://localhost:8080/events/adverts/likes`, { event: dummyEvents.advertLike })
     .then((response) => {
       t.equal(response.data, 'post recorded');
@@ -38,10 +38,21 @@ test('axios post request to advert like test service return "status 200" ', func
   t.end();
 })
 
-test('axios post request to advert like test service return "status 200" ', function (t) {
+test('axios post request to advert like test service return "post recorded" ', function (t) {
   axios.post(`http://localhost:8080/events/adverts/clicks`, { event: dummyEvents.advertLike })
     .then((response) => {
       t.equal(response.data, 'click recorded');
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  t.end();
+})
+
+test('axios post request to advert view should return 200', function (t) {
+  axios.post(`http://localhost:8080/events/adverts/views`, { event: dummyEvents.advertView })
+    .then((response) => {
+      t.equal(response.status, 200);
     })
     .catch((err) => {
       console.log(err);

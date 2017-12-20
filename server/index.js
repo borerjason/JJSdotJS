@@ -1,12 +1,3 @@
-// ---------------- needed for load testing ----------------
-
-// const apm = require('elastic-apm-node').start({
-//   appName: 'client',
-//   secretToken: '',
-//   serverUrl: 'http://localhost:8200',
-// });
-
-// ---------------------------------------------------------
 require('newrelic');
 
 const service = require('express')();
@@ -37,10 +28,8 @@ service.route('/events/adverts/likes')
 service.route('/events/adverts/clicks')
   .post(controller.clickAdvert);
 
-// service.route('/events/adverts/views')
-//   .post(controller.logEvent.logEvent);
-
-// service.use(apm.middleware.express());
+service.route('/events/adverts/views')
+  .post(controller.viewAdvert);
 
 
 const PORT = process.env.PORT || 8080;
