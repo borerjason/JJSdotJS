@@ -1,15 +1,15 @@
 const axios = require('axios');
-const MockAdapter = require('axios-mock-adapter');
+// const MockAdapter = require('axios-mock-adapter');
+require('../../dummy_data/mocks');
 
-const dummy = require('../../dummy_data');
 const prepareFeed = require('../helpers/prepare_feed');
 
 // ------ mock for service testing -------
 
-const mock = new MockAdapter(axios, { delayResponse: 25 });
-mock
-  .onGet('/users/0/feed').reply(200, { feed: dummy.feed })
-  .onGet('/adverts?userId=0').reply(200, { adverts: dummy.adverts });
+// const mock = new MockAdapter(axios, { delayResponse: 25 });
+// mock
+//   .onGet('/users/0/feed').reply(200, { feed: dummy.feed })
+//   .onGet('/adverts?userId=0').reply(200, { adverts: dummy.adverts });
 
 // ---------------------------------------
 

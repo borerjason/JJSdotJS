@@ -17,6 +17,11 @@ const controller = require('./controllers');
 
 service.use(bodyParser.json());
 
+service.route('/')
+  .get((req, res) => {
+    res.send('Welcome!');
+  });
+
 service.route('/feed')
   .get(controller.getFeed.feed);
 
