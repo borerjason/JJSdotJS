@@ -11,7 +11,8 @@
     "start": "node server/index.js",
     "start:dev": "nodemon server/index.js",
     "test:tape": "node ./test && zuul --ui tape --local 9966 -- test/tests.js",
-    "ci": "node ./test"
+    "ci": "node ./test",
+    "db:seed": "node database/seed/seed.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,10 @@
   },
   "homepage": "https://github.com/borerjason/JJSdotJS#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "cassandra-driver": "^3.3.0",
+    "express": "^4.16.2",
+    "generate-random-data": "0.0.3",
+    "uniqid": "^4.1.1"
   },
   "devDependencies": {
     "babel-tape-runner": "^2.0.1",
