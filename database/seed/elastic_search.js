@@ -1,28 +1,9 @@
-// const uniqid = require('uniqid');
-const rn = require('random-number');
-
-const gen = rn.generator({
-  integer: true,
-});
-
-const client = require('../index');
+const elastic = require('../../elastic');
 const { controlDate, experimentDate } = require('./helpers');
-const elastic = require('../../elastic/index');
 
 const experimentGroups = {
   control: 1,
   experiment: 3,
-};
-
-const populateExperimentTable = () => {
-  const insertUser = 'INSERT INTO experiment (user_id, experimentgroup) VALUES (?, ?)';
-  let experiment = false;
-
-  for (let i = 0; i < 10000; i += 1) {
-    const experimentGroup = experiment ? experimentGroups.experiment : experimentGroups.control;
-    experiment = !experiment;
-    client.client.execute(insertUser, [i, experimentGroup], { prepare: true }, () => {});
-  }
 };
 
 const itemTypes = ['page', 'post', 'advert'];
@@ -35,12 +16,13 @@ let max = 200;
 const insertEvent = 'INSERT INTO events (id, user_id, experimentgroup, item_id, itemtype, eventtype, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?)';
 
 const seedEvents = (date, itemNum, startNum, maxNum, group) => {
-  const arr = [];
+  // const arr = [];
   let i = startNum;
   for (; i < max; i += 2) {
-    arr.push({ query: insertEvent, params: [gen(), i, group, gen(), itemTypes[item], eventTypes[item], date] });
+    elastic.index({id: uniqid(), user_id: i, experimentalgroup: group, item_id: uniqid(), itemtype: itemTypes[item], eventtype: eventTypes[item], timestamp: date });
   }
-  client.client.batch(arr, { prepare: true }).then((response) => {
+
+  client.client.batch(arr, { prepare: true }).then(() => {
     count += arr.length;
     if (itemNum === 0) {
       item = 1;
@@ -86,13 +68,3 @@ const seedEvents = (date, itemNum, startNum, maxNum, group) => {
     }
   });
 };
-
-// Uncomment and run file to seed database
-// seedEvents('01/01/2017', item, 0, max, experimentGroups.control);
-// seedEvents('01/01/2017', item, 1, max, experimentGroups.experiment);
-
-/*
-create table events (id int primary key, user_id int, experimentgroup int, item_id int, itemtype text, eventtype text, timestamp timestamp) ;
-*/
-
-module.exports.insertEvent = insertEvent;
