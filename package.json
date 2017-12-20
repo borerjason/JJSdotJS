@@ -35,6 +35,7 @@
     "generate-random-data": "0.0.3",
     "moment": "^2.19.4",
     "random-number": "0.0.9",
+    "redis": "^2.8.0",
     "uniqid": "^4.1.1"
   },
   "devDependencies": {
