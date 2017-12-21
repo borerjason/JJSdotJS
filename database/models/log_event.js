@@ -1,5 +1,3 @@
-// const uniqid = require('uniqid');
-
 const rn = require('random-number');
 
 const gen = rn.generator({
@@ -15,4 +13,3 @@ const postEvent = e => (
   client.execute(insertEvent, [gen(), e.user_id, e.experimentgroup, e.item_id, e.itemtype, e.eventtype, moment().format('L')], { prepare: true }));
 
 module.exports.postEvent = postEvent;
-

@@ -13,7 +13,7 @@ client.on('connect', function (res, err) {
 require('../../dummy_data/mocks');
 
 module.exports = (req, res) => {
-  const userId = Math.floor(Math.random() * 10000);
+  const userId = Math.floor(Math.random() * 10);
   const groupStr = `${userId}Group`;
 
   client.get(userId, (err, reply) => {

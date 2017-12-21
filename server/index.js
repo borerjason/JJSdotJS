@@ -13,6 +13,7 @@ service.route('/')
     res.send('Welcome!');
   });
 
+// add userID as a query param once load testing is done
 service.route('/feed')
   .get(controller.getFeed);
 
