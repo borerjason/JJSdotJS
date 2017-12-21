@@ -14,7 +14,7 @@ service.route('/')
   });
 
 service.route('/feed')
-  .get(controller.getFeed.feed);
+  .get(controller.getFeed);
 
 service.route('/events/pages/likes')
   .post(controller.likePage);

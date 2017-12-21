@@ -13,10 +13,11 @@ client.on('connect', function (res, err) {
 
 require('../../dummy_data/mocks');
 
-const feed = (req, res) => {
-  const userId = '0';
+module.exports = (req, res) => {
+  const userId = 4;
   client.get(userId, (err, reply) => {
     if (reply) {
+      console.log('User ID: ', userId);
       const userFeed = JSON.parse(reply);
       res.send(200, userFeed);
       // in order to update add this part of the function to a queue
@@ -25,8 +26,10 @@ const feed = (req, res) => {
       //     client.set(userId, JSON.stringify(result));
       //   });
     } else {
+      console.log('User ID: ', userId);
       fetchFeed(0)
         .then((result) => {
+          console.log('Result', result);
           res.send(200, result);
           client.set(userId, JSON.stringify(result));
         });
@@ -34,4 +37,3 @@ const feed = (req, res) => {
   });
 };
 
-module.exports.feed = feed;
