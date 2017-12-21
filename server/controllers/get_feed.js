@@ -40,7 +40,6 @@ module.exports = (req, res) => {
         // get feed for user who is not in the cache
         fetchFeed(userId, group)
           .then((result) => {
-            console.log('RESULT', group, result);
             res.send(200, result);
             client.set(userId, JSON.stringify(result));
           });
