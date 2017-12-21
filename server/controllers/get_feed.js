@@ -14,7 +14,7 @@ client.on('connect', function (res, err) {
 require('../../dummy_data/mocks');
 
 module.exports = (req, res) => {
-  const userId = 4;
+  const userId = 5;
   client.get(userId, (err, reply) => {
     if (reply) {
       console.log('User ID: ', userId);
@@ -27,7 +27,7 @@ module.exports = (req, res) => {
       //   });
     } else {
       console.log('User ID: ', userId);
-      fetchFeed(0)
+      fetchFeed(userId)
         .then((result) => {
           console.log('Result', result);
           res.send(200, result);

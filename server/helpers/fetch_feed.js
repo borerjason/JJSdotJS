@@ -5,7 +5,8 @@ module.exports = (userId) => {
 
   return new Promise((resolve, reject) => {
     const contentFeed = axios.get(`/users/${userId}/feed`);
-    const adverts = axios.get(`/adverts?userId=${userId}`);
+    // change back to correct from app plan when ready to deploy
+    const adverts = axios.get(`/adverts/${userId}/feed`);
 
     Promise.all([contentFeed, adverts])
       .then((response) => {

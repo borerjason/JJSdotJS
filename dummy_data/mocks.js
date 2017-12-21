@@ -18,6 +18,5 @@ mock
   .onPost('/adverts/0/likes').reply(200)
   .onPost('/adverts/0/click').reply(200)
   .onGet(/\/users\/\d+\/feed/).reply(200, { feed: dummy.feed })
-  // .onGet('/users/0/feed').reply(200, { feed: dummy.feed })
-  .onGet('/adverts?userId=0').reply(200, { adverts: dummy.adverts });
+  .onGet(/\/adverts\/\d+\/feed/).reply(200, { adverts: dummy.adverts });
 
