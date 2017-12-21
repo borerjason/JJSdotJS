@@ -1,4 +1,3 @@
-const axios = require('axios');
 const redis = require('redis');
 require('dotenv').config();
 
@@ -14,10 +13,11 @@ client.on('connect', function (res, err) {
 require('../../dummy_data/mocks');
 
 module.exports = (req, res) => {
-  const userId = 5;
+  const userId = Math.floor(Math.random() * 10000);
+  const groupStr = `${userId}Group`;
+
   client.get(userId, (err, reply) => {
     if (reply) {
-      console.log('User ID: ', userId);
       const userFeed = JSON.parse(reply);
       res.send(200, userFeed);
       // in order to update add this part of the function to a queue
@@ -26,14 +26,25 @@ module.exports = (req, res) => {
       //     client.set(userId, JSON.stringify(result));
       //   });
     } else {
-      console.log('User ID: ', userId);
-      fetchFeed(userId)
-        .then((result) => {
-          console.log('Result', result);
-          res.send(200, result);
-          client.set(userId, JSON.stringify(result));
-        });
+      let group = null;
+      // Check if user is assigned to experiment group and retrive it or assign it
+      client.get(groupStr, (err, reply) => {
+        if (reply) {
+          group = reply;
+        } else {
+          const num = Math.floor(Math.random() * 2);
+          num === 0 ? group = 1 : group = 3;
+          // assign group number to user
+          client.set(groupStr, group);
+        }
+        // get feed for user who is not in the cache
+        fetchFeed(userId, group)
+          .then((result) => {
+            console.log('RESULT', group, result);
+            res.send(200, result);
+            client.set(userId, JSON.stringify(result));
+          });
+      });
     }
   });
 };
-
