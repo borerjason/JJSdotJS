@@ -4,7 +4,7 @@ const faker = require('faker');
 
 const dummy = require('../dummy_data');
 
-const mock = new MockAdapter(axios, { delayResponse: 25 });
+const mock = new MockAdapter(axios, { delayResponse: 10 });
 mock
   .onPut('/posts/0/likes').reply(200, {
     postId: faker.random.number(),
