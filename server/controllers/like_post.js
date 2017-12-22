@@ -3,6 +3,7 @@ const { likePostContent } = require('../helpers/post_content');
 
 module.exports = (req, res) => {
   const eventInfo = req.body.event;
+  res.send(200, 'post recorded');
   postEvent(eventInfo)
     .then((response) => {
       console.log('added to database');
@@ -12,10 +13,9 @@ module.exports = (req, res) => {
     });
   likePostContent(eventInfo.user_id, eventInfo.item_id)
     .then(() => {
-      res.send('post recorded');
+      console.log('posted');
     })
     .catch((catchRes) => {
       console.log('catchRes', catchRes);
-      res.send('like could not be recorded');
     });
 };
