@@ -88,11 +88,18 @@ const seedEvents = (date, itemNum, startNum, maxNum, group) => {
 };
 
 // Uncomment and run file to seed database
-// seedEvents('01/01/2017', item, 0, max, experimentGroups.control);
-// seedEvents('01/01/2017', item, 1, max, experimentGroups.experiment);
+
+function seedControl() {
+  seedEvents('01/01/2017', item, 0, max, experimentGroups.control);
+}
+
+function seedExperiment() {
+  seedEvents('01/01/2017', item, 1, max, experimentGroups.experiment);
+}
 
 /*
 create table events (id int primary key, user_id int, experimentgroup int, item_id int, itemtype text, eventtype text, timestamp timestamp) ;
 */
-
+module.exports.seedControl = seedControl;
+module.exports.seedExperiment = seedExperiment;
 module.exports.insertEvent = insertEvent;
