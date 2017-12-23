@@ -2,7 +2,7 @@ config:
   target: 'http://localhost:3000'
   phases:
     - duration: 30
-      arrivalRate: 1000
+      arrivalRate: 500
   defaults:
 scenarios:
   - flow:
@@ -10,9 +10,9 @@ scenarios:
         url: "/events/posts/likes"
         json: 
           event : {
-              user_id: 0,
+              user_id: 100,
               experimentgroup: 3,
-              item_id: 0,
+              item_id: 5,
               itemtype: 'Post',
               eventtype: 'Like'
           }
