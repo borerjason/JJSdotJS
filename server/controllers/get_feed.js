@@ -4,7 +4,7 @@ require('dotenv').config();
 const fetchFeed = require('../helpers/fetch_feed');
 
 // process.env.RED_PORT, process.env.RED_HOST)
-const client = redis.createClient();
+const client = redis.createClient(process.env.RED_PORT, process.env.RED_HOST);
 
 client.on('connect', function (res, err) {
   console.log('connected to redis');

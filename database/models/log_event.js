@@ -10,7 +10,6 @@ const moment = require('moment');
 
 const { client } = require('../index');
 const { insertEvent } = require('../seed/seed.js');
-console.log('Client', client);
 const time = moment().format('L');
 
 const postEvent = e => (
