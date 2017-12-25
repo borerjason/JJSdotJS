@@ -1,6 +1,7 @@
 require('newrelic');
 
 const service = require('express')();
+
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
@@ -33,7 +34,7 @@ service.route('/events/adverts/views')
   .post(controller.viewAdvert);
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 service.listen(PORT, () => {
   console.log(`Listing on port ${PORT}`);

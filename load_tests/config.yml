@@ -1,20 +1,20 @@
 config:
-  target: 'http://localhost:8080'
+  target: 'http://localhost:3000'
   phases:
     - duration: 30
-      arrivalRate: 1000
+      arrivalRate: 500
   defaults:
 scenarios:
   - flow:
-    - get:
-        url: "/feed"
-        # json: 
-          # event : {
-          #     user_id: 0,
-          #     experimentgroup: 3,
-          #     item_id: 0,
-          #     itemtype: 'Post',
-          #     eventtype: 'Like'
-          # }
+    - put:
+        url: "/events/posts/likes"
+        json: 
+          event : {
+              user_id: 100,
+              experimentgroup: 3,
+              item_id: 5,
+              itemtype: 'Post',
+              eventtype: 'Like'
+          }
         
           
