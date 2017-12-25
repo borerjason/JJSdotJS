@@ -16,6 +16,11 @@ RUN npm install
 # What port will the container talk to the outside world with once created?
 EXPOSE 3000
 
+# ENV Variables
+ENV DB_HOST=54.176.145.8
+ENV RED_HOST=13.57.146.171
+ENV RED_PORT=6379
+
 # How do you start your app?
 CMD ["npm", "start"]
 
