@@ -3,6 +3,7 @@ const { likePostContent } = require('../helpers/post_content');
 
 module.exports = (req, res) => {
   const eventInfo = req.body.event;
+  console.log(eventInfo);
   res.send(200, 'post recorded');
   postEvent(eventInfo)
     .then((response) => {
