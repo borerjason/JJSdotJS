@@ -11,11 +11,11 @@ service.use(bodyParser.json());
 
 service.route('/')
   .get((req, res) => {
-    res.send('Welcome!');
+    res.send('Hello!');
   });
 
 // add userID as a query param once load testing is done
-service.route('/feed')
+service.route('/feed?userId=:id')
   .get(controller.getFeed);
 
 service.route('/events/pages/likes')
