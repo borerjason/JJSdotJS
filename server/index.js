@@ -15,7 +15,7 @@ service.route('/')
   });
 
 // add userID as a query param once load testing is done
-service.route('/feed?userId=:id')
+service.route('/feed')
   .get(controller.getFeed);
 
 service.route('/events/pages/likes')
