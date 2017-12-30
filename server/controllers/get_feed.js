@@ -1,19 +1,40 @@
-const redis = require('redis');
+// const redis = require('redis');
+const kue = require('kue');
+const client = require('../../cache');
 require('dotenv').config();
 
 const fetchFeed = require('../helpers/fetch_feed');
 
 // process.env.RED_PORT, process.env.RED_HOST)
-const client = redis.createClient(process.env.RED_PORT, process.env.RED_HOST);
+// for local testing
+// const client = redis.createClient(process.env.RED_PORT, 'localhost');
+// for deploy
+// const client = redis.createClient(process.env.RED_PORT, process.env.RED_HOST);
 
-client.on('connect', function (res, err) {
-  console.log('connected to redis');
-});
+/*  ----- kue for job---
+const queue = kue.createQueue();
+
+queue.create('storeFeed', {
+  userId, 
+}).attempts(3).save();
+
+function storeFeed(obj) {
+  const group = fetchGroup(userId);
+    fetchFeed(obj.userId, group)
+      .then((result) => {
+        client.set(userId, JSON.stringify(result));
+      });
+}
+*/
+
+// client.on('connect', function (res, err) {
+//   console.log('connected to redis');
+// });
 
 require('../../dummy_data/mocks');
 
 module.exports = (req, res) => {
-  const userId = Math.floor(Math.random() * 10);
+  const userId = Math.floor(Math.random() * 5);
 
   client.get(userId, (err, reply) => {
     // if feed is cached send current cached feed back to client
@@ -22,12 +43,6 @@ module.exports = (req, res) => {
       res.send(200, userFeed);
       // add this function to kue
       // in order to update add this part of the function to a queue
-      const group = fetchGroup(userId);
-
-      fetchFeed(userId, group)
-        .then((result) => {
-          client.set(userId, JSON.stringify(result));
-        });
     } else {
       const group = fetchGroup(userId);
       // get feed for user who is not in the cache
