@@ -5,6 +5,7 @@ const service = require('express')();
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
+
 const controller = require('./controllers');
 
 service.use(bodyParser.json());
@@ -15,7 +16,7 @@ service.route('/')
   });
 
 // add userID as a query param once load testing is done
-service.route('/feed?userId=:id')
+service.route('/feed')
   .get(controller.getFeed);
 
 service.route('/events/pages/likes')
