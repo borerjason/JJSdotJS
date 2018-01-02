@@ -9,7 +9,6 @@ require('../../dummy_data/mocks');
 module.exports = (req, res) => {
   const userId = Math.floor(Math.random() * 5);
   client.get(userId, (err, reply) => {
-    // if feed is cached send current cached feed back to client
     if (reply) {
       const userFeed = JSON.parse(reply);
       res.send(200, userFeed);
@@ -17,12 +16,10 @@ module.exports = (req, res) => {
         userId,
       }).save();
     } else {
-      const group = fetchGroup(userId);
-      // get feed for user who is not in the cache
+      const group = fetchGroup(userId);  
       fetchFeed(userId, group)
         .then((result) => {
           res.send(200, result);
-          // add this to queue
           client.set(userId, JSON.stringify(result));
         });
     }
