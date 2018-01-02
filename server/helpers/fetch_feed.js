@@ -4,8 +4,7 @@ const prepareFeed = require('./prepare_feed');
 module.exports = (userId, group) => (
   new Promise((resolve, reject) => {
     const contentFeed = axios.get(`/users/${userId}/feed`);
-    // change back to correct from app plan when ready to deploy
-    const adverts = axios.get(`/adverts/${userId}/feed`);
+    const adverts = axios.get(`/adverts?userId=${userId}`);
 
     Promise.all([contentFeed, adverts])
       .then((response) => {

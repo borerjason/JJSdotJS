@@ -4,7 +4,7 @@ module.exports = userId => (
   new Promise((resolve, reject) => {
     let group = null;
     const groupStr = `${userId}Group`;
-    
+
     client.get(groupStr, (err, reply) => {
       if (reply) {
         group = reply;
