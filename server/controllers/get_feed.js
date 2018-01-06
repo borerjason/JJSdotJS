@@ -7,6 +7,7 @@ require('dotenv').config();
 require('../../dummy_data/mocks');
 
 module.exports = (req, res) => {
+  console.log('request', req);
   const userId = Math.floor(Math.random() * 5);
   client.get(userId, (err, reply) => {
     if (reply) {
