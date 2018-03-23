@@ -21,7 +21,8 @@ module.exports = (req, res) => {
       fetchFeed(userId, group)
         .then((result) => {
           res.send(200, result);
-          client.set(userId, JSON.stringify(result));
+          result.push(0);
+          client.set(userId, JSON.stringify(result), 'EX', 60 * 30);
         });
     }
   });
